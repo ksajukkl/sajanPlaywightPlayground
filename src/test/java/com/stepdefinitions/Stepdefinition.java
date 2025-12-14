@@ -19,10 +19,9 @@ public class Stepdefinition {
 
     TestContext testContext;
     HomePage homePage;
-
+    private static final Logger logger = Logger.getLogger(Stepdefinition.class);
     public Stepdefinition(){
-        System.out.println("Sajan");
-//        this.testContext = new TestContext();
+        logger.info("Sajan");
     }
     public Stepdefinition(TestContext testContext){
         this.testContext = testContext;
@@ -34,19 +33,18 @@ public class Stepdefinition {
 
     @Then("Navigate to URL")
     public void navigateToUrl() throws IOException {
-//        Playwright play= Playwright.create();
-//        Browser browser = play.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-//        Page page = browser.newPage();
         testContext.setCurrentPage(testContext.getCurrentPage());
         Page page= testContext.getCurrentPage();
         testContext.setHomePage(new HomePage(page));
-
+        logger.info("Execution started");
         page.navigate("https://www.google.com");
         homePage =testContext.getHomePage();
+        private static final Logger logger = Logger.getLogger(Stepdefinition.class);
         homePage.homePageTextBox.fill("Sajan");
         testContext.getValues();
         testContext.getValues();
         testContext.getScenario().attach(testContext.getTable().toString(),"text/html; charset=utf-8","NOName.html");
+        logger.info("Execution Completed");
 //        play.close();
     }
 
@@ -60,8 +58,8 @@ public class Stepdefinition {
     public void closeAll() throws IOException {
         String image= "screenshots\\"+ "sa"+".png";
 
-        testContext.getCurrentPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get( "screenshots\\"+ "sa"+".png")));
-        testContext.getScenario().attach(testContext.getCurrentPage().screenshot(),"image/png","Nmmmmmm");
+        testContext.getCurrentPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get( "screenshots\\"+ "Sc"+".png")));
+        testContext.getScenario().attach(testContext.getCurrentPage().screenshot(),"image/png","scName");
 //        testContext.getScenario().attach(Files.readAllBytes(Paths.get(image).toAbsolutePath()),"image/png",image);
     }
 }
