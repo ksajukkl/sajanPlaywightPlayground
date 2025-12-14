@@ -40,7 +40,6 @@ public class Stepdefinition {
         logger.info("Execution started");
         page.navigate("https://www.google.com");
         homePage =testContext.getHomePage();
-        private static final Logger logger = Logger.getLogger(Stepdefinition.class);
         homePage.homePageTextBox.fill("Sajan");
         testContext.getValues();
         testContext.getValues();
