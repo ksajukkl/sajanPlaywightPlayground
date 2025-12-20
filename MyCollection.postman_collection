@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "107837b3-be38-41d4-ae65-0309fba46a41",
+		"name": "My Collection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50952063",
+		"_collection_link": "https://ksaju2008-195652.postman.co/workspace/Saajan's-Workspace~b7cf5d4a-3b7e-4ca4-863e-bcef24b8c903/collection/50952063-107837b3-be38-41d4-ae65-0309fba46a41?action=share&source=collection_link&creator=50952063"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Extract Lender oAuth token from response body\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"var host = jsonData.host;\r",
+							"\r",
+							"pm.globals.set(\"host\", host); // Store the host in a global variable\r",
+							"console.log(\"Host: \"+ pm.globals.get(\"host\"))"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require(\"uuid\");\r",
+							"var id = uuid.v4();\r",
+							"var email = `testuser-${id.slice(id.length - 6)}@unbreakableapi.com`\r",
+							"pm.collectionVariables.set('userEmail', email);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sajan@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.unbreakableapi.com/api/user/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"unbreakableapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "userEmail",
+			"value": ""
+		}
+	]
+}
