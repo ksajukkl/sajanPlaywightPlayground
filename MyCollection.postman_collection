@@ -20,7 +20,10 @@
 							"var host = jsonData.host;\r",
 							"\r",
 							"pm.globals.set(\"host\", host); // Store the host in a global variable\r",
-							"console.log(\"Host: \"+ pm.globals.get(\"host\"))"
+							"console.log(\"Host: \"+ pm.globals.get(\"host\"))\r",
+							"console.log(\"Request URL: \" + pm.request.url);\r",
+							"console.log(\"Request: \"+ pm.request.body.raw)\r",
+							"console.log(\"Response: \"+ responseBody)"
 						],
 						"type": "text/javascript",
 						"packages": {},
@@ -61,6 +64,20 @@
 						"packages": {},
 						"requests": {}
 					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Request: \"+ pm.request.body.raw)\r",
+							"console.log(\"Host: \"+ pm.globals.get(\"host\"))\r",
+							"console.log(\"Request URL: \" + pm.request.url);\r",
+							"console.log(\"Response: \"+ responseBody)"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
 				}
 			],
 			"request": {
@@ -68,7 +85,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"sajan@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+					"raw": "{\r\n    \"email\": \"2222323edfef@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
